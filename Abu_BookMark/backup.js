@@ -53,7 +53,6 @@ function createDialogMessage() {
 
 function errorFunction(error) {
   console.log(error.message);
-  // handle error conditions
 }
 
 getCurrrentWeatherByCity();

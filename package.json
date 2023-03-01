@@ -1,11 +1,12 @@
 {
-  "name": "testing",
+  "name": "Dynamics 365 Bookmark",
   "version": "1.0.0",
-  "description": "This is a jest testing ",
+  "description": "This is a Bookmark for the crm ",
   "main": "jestTesting.js",
   "scripts": {
     "test": "jest"
   },
   "author": "ABU",
-  "license": "ISC"
+  "license": "ISC",
+  "keywords": []
 }

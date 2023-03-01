@@ -1,5 +1,4 @@
 function getCurrentSystemUser() {
-  debugger;
   let formcontext = Xrm.Page;
   let recordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
   Xrm.WebApi.retrieveRecord("systemuser", recordId, "?$select=fullname").then(
@@ -10,7 +9,6 @@ function getCurrentSystemUser() {
 
 function getUserInput(result) {
   if (!result) return;
-  debugger;
   let question = prompt("Hello" + result.fullname + "Ask me anything?");
   let answer = question.toLowerCase();
   let weatherForcastinCelcius = convertsKelvinToCelcious(data.main.temp);
@@ -25,8 +23,7 @@ function getCurrrentWeatherByCity() {
   let weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
   fetch(weatherUrl + citeAnswer + "&appid=0002cc42e0f7ee0022f9bfd9aa0d7161")
     .then((response) => response.json())
-    .then((data) => {
-      debugger;
+    .then((data) => { 
       let celciusValue = convertsKelvinToCelcious(data.main.temp);
       alert(celciusValue);
     });

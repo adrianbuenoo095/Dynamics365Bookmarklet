@@ -25,7 +25,6 @@ function getCurrrentWeatherByCity(result) {
   fetch(weatherUrl + cityName + secretApiKey)
     .then((response) => response.json())
     .then((data) => {
-      debugger;
       let celciusValue = Math.round(convertsKelvinToCelcious(data.main.temp));
       alert(`Current weather in ${data.name} is ${celciusValue}`);
     });

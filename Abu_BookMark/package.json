@@ -1,0 +1,11 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "This is a jest testing ",
+  "main": "jestTesting.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "ABU",
+  "license": "ISC"
+}

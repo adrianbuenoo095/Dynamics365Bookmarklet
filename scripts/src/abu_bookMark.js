@@ -21,7 +21,7 @@ function getCurrrentWeatherByCity(result) {
   let cityName = askUser.toLowerCase();
   let secretApiKey = "&appid=0002cc42e0f7ee0022f9bfd9aa0d7161";
 
-  fetch(weatherUrl + cityName + secretApiKey)
+  fetch(weatherUrl, cityName, secretApiKey)
     .then((response) => response.json())
     .then((data) => {
       let celciusValue = Math.round(convertsKelvinToCelcious(data.main.Ò));

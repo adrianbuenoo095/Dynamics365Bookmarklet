@@ -5,12 +5,14 @@
 "use strict";
 
 function getCurrentSystemUser() {
-  let formcontext = Xrm.Page;
+  let formcontext = Xrm.Page || window.document;
   let userRecordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
 
-  Xrm.WebApi.retrieveRecord("systemuser", userRecordId, "?$select=fullname").then(
-    getCurrrentWeatherByCity
-  );
+  Xrm.WebApi.retrieveRecord(
+    "systemuser",
+    userRecordId,
+    "?$select=fullname"
+  ).then(getCurrrentWeatherByCity);
 }
 
 async function getCurrrentWeatherByCity(result) {

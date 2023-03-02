@@ -1,31 +1,30 @@
 /**
  * @author: Adrian Bueno <adrianbueno095@gmail.com>
- *
- *
  */
 
 "use strict";
 
 function getCurrentSystemUser() {
   let formcontext = Xrm.Page;
-  let recordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
-  Xrm.WebApi.retrieveRecord("systemuser", recordId, "?$select=fullname").then(
-    getCurrrentWeatherByCity,
-    errorFunction
+  let userRecordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
+  
+  Xrm.WebApi.retrieveRecord("systemuser", userRecordId, "?$select=fullname").then(
+    getCurrrentWeatherByCity
   );
 }
 
 function getCurrrentWeatherByCity(result) {
   if (!result) return;
   askUser = prompt(`Hello ${result.fullname}, Type a City Name`);
-  let cityName = askUser.toLowerCase();
+  
   let weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
+  let cityName = askUser.toLowerCase();
   let secretApiKey = "&appid=0002cc42e0f7ee0022f9bfd9aa0d7161";
 
   fetch(weatherUrl + cityName + secretApiKey)
     .then((response) => response.json())
     .then((data) => {
-      let celciusValue = Math.round(convertsKelvinToCelcious(data.main.temp));
+      let celciusValue = Math.round(convertsKelvinToCelcious(data.main.Ò));
       alert(`Current weather in ${data.name} is ${celciusValue}`);
     });
 }

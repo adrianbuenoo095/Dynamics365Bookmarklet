@@ -5,7 +5,7 @@
 "use strict";
 
 function getCurrentSystemUser() {
-  let formcontext = Xrm.Page || window.document;
+  let formcontext = Xrm.Page
   let userRecordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
 
   Xrm.WebApi.retrieveRecord(

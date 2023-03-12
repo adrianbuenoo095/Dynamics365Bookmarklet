@@ -18,7 +18,7 @@ async function getCurrentSystemUser() {
 
 async function getCurrrentWeatherByCity() {
 
-  askUser = prompt(`Hello ${getCurrentSystemUser()}, Type a City Name`);
+  let askUser = prompt(`Hello ${getCurrentSystemUser()}, Type a City Name`);
 
   let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${askUser.toLowerCase()}&appid={0002cc42e0f7ee0022f9bfd9aa0d7161}`;
 

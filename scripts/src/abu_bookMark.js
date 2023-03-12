@@ -12,6 +12,7 @@ async function getCurrentSystemUser() {
     "?$select=fullname");
 
   if (!userFullname) return;
+
   return userFullname;
 
 }

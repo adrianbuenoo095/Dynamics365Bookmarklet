@@ -4,11 +4,11 @@
 
 "use strict";
 
-function getCurrentSystemUser() {
-  let formcontext = Xrm.Page
+async function getCurrentSystemUser() {
+  let formcontext = Xrm.Page;
   let userRecordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
 
-  Xrm.WebApi.retrieveRecord(
+  await Xrm.WebApi.retrieveRecord(
     "systemuser",
     userRecordId,
     "?$select=fullname"
@@ -48,11 +48,6 @@ function createDialogMessage() {
 
   dialogTable.innerHTML = "Current Weather is: ";
   document.body.appendChild(dialogTable);
-}
-
-function errorFunction(error) {
-  console.log(error.message);
-  // handle error conditions
 }
 
 getCurrentSystemUser();

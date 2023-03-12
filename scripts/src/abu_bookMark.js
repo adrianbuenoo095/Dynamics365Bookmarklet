@@ -8,16 +8,17 @@ async function getCurrentSystemUser() {
   let formcontext = Xrm.Page;
   let userRecordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
 
-  await Xrm.WebApi.retrieveRecord(
-    "systemuser",
-    userRecordId,
-    "?$select=fullname"
-  ).then(getCurrrentWeatherByCity);
+  let userFullname = await Xrm.WebApi.retrieveRecord("systemuser", userRecordId,
+    "?$select=fullname");
+
+  if (!userFullname) return;
+  return userFullname;
+
 }
 
-async function getCurrrentWeatherByCity(result) {
-  if (!result) return;
-  askUser = prompt(`Hello ${result.fullname}, Type a City Name`);
+async function getCurrrentWeatherByCity() {
+
+  askUser = prompt(`Hello ${getCurrentSystemUser()}, Type a City Name`);
 
   let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${askUser.toLowerCase()}&appid={0002cc42e0f7ee0022f9bfd9aa0d7161}`;
 

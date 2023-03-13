@@ -5,8 +5,8 @@ async function getCurrentSystemUser() {
     let formcontext = Xrm.Page;
 
     if (!formcontext) return;
-    let userRecordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
 
+    let userRecordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
     let userFullname = await Xrm.WebApi.retrieveRecord(
         "systemuser",
         userRecordId,
@@ -20,7 +20,6 @@ async function getCurrentSystemUser() {
 
 function getUserInput() {
     let userInputCityName = prompt(`Hello Random Person, Type a City Name`);
-
     return userInputCityName;
 }
 

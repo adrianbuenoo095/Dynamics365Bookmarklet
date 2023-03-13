@@ -19,7 +19,7 @@ function getUserInput() {
         `Hello Random Person, Type a City Name`
     );
 
-    return userInputCityName ;
+    return userInputCityName;
 }
 
 async function getCurrrentWeatherByCity() {

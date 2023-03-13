@@ -22,7 +22,7 @@ function getUserInput() {
     return userInputCityName;
 }
 
-async function getCurrrentWeatherByCity() {
+async function getCurrrentWeatherByCityName() {
     let cityName = getUserInput();
     let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
 
@@ -55,4 +55,4 @@ function createDialogMessage() {
     document.body.appendChild(dialogTable);
 }
 
-getCurrrentWeatherByCity();
+getCurrrentWeatherByCityName();

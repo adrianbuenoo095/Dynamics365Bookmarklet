@@ -23,14 +23,15 @@ function getUserInput() {
 }
 
 async function getCurrrentWeatherByCityName() {
-    let cityName = getUserInput();
-    let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
+    let cityNameUserInput = getUserInput();
+    let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameUserInput}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
 
     await fetch(weatherUrl)
         .then((response) => response.json())
         .then((data) => {
+            let cityName = data.name;
             let celciusValue = Math.round(convertsKelvinToCelcious(data.main.temp));
-            alert(`Current weather in ${data.name} is ${celciusValue}`);
+            createDialogMessage(cityName, celciusValue);
         });
 }
 
@@ -41,7 +42,7 @@ function convertsKelvinToCelcious(kelvinValue) {
     return resultInCelcius;
 }
 
-function createDialogMessage() {
+function createDialogMessage(cityName, celciusValue) {
     let dialogTable = document.createElement("div");
     dialogTable.style.width = "500px";
     dialogTable.style.height = "500px";
@@ -51,7 +52,7 @@ function createDialogMessage() {
     dialogTable.style.right = "50%";
     dialogTable.style.transition = "translate(-50%, -50%)";
 
-    dialogTable.innerHTML = "Current Weather is: ";
+    dialogTable.innerHTML = `Current Weather in ${cityName} is : ${celciusValue}`;
     document.body.appendChild(dialogTable);
 }
 

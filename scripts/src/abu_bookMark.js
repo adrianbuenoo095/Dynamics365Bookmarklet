@@ -22,17 +22,18 @@ function getUserInput() {
     let userInputCityName = prompt(
         `Hello Random Person, Type a City Name`
     );
-    return userInputCityName;
+
+    return userInputCityName ;
 }
 
 async function getCurrrentWeatherByCity() {
     let cityName = getUserInput();
-    let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid={0002cc42e0f7ee0022f9bfd9aa0d7161}`;
+    let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
 
     await fetch(weatherUrl)
         .then((response) => response.json())
         .then((data) => {
-            let celciusValue = Math.round(convertsKelvinToCelcious(data.main.Ò));
+            let celciusValue = Math.round(convertsKelvinToCelcious(data.main));
             alert(`Current weather in ${data.name} is ${celciusValue}`);
         });
 }

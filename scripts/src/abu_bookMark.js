@@ -29,7 +29,7 @@ async function getCurrrentWeatherByCity() {
     await fetch(weatherUrl)
         .then((response) => response.json())
         .then((data) => {
-            let celciusValue = Math.round(convertsKelvinToCelcious(data.main));
+            let celciusValue = Math.round(convertsKelvinToCelcious(data.main.temp));
             alert(`Current weather in ${data.name} is ${celciusValue}`);
         });
 }

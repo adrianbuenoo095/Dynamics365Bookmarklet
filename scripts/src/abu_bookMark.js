@@ -7,7 +7,11 @@ async function getCurrentSystemUser() {
     if (!formcontext) return;
     let userRecordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
 
-    let userFullname = await Xrm.WebApi.retrieveRecord("systemuser", userRecordId, "?$select=fullname");
+    let userFullname = await Xrm.WebApi.retrieveRecord(
+        "systemuser",
+        userRecordId,
+        "?$select=fullname"
+    );
 
     if (!userFullname) return;
 
@@ -15,9 +19,7 @@ async function getCurrentSystemUser() {
 }
 
 function getUserInput() {
-    let userInputCityName = prompt(
-        `Hello Random Person, Type a City Name`
-    );
+    let userInputCityName = prompt(`Hello Random Person, Type a City Name`);
 
     return userInputCityName;
 }

@@ -48,6 +48,8 @@ function convertsKelvinToCelcious(kelvinValue) {
 
 function createDialogMessage(cityName, celciusValue) {
     let dialogTable = document.createElement("div");
+    let degreesCelsiusSymbol = "&#8451;";
+
     dialogTable.style.width = "500px";
     dialogTable.style.height = "500px";
     dialogTable.style.background = "#DCBAE0";
@@ -57,7 +59,7 @@ function createDialogMessage(cityName, celciusValue) {
     dialogTable.style.justifyContent = "center"
     dialogTable.style.fontSize = "30px"
 
-    dialogTable.innerHTML = `Current Weather in ${cityName} is : ${celciusValue} &#8451;`;
+    dialogTable.innerHTML = `Current Weather in ${cityName} is : ${celciusValue} ${degreesCelsiusSymbol}`;
     document.body.appendChild(dialogTable);
 }
 

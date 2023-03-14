@@ -1,7 +1,8 @@
+import { library, icon } from "@fortawesome/fontawesome-svg-core";
+
 /**
  * @author: Adrian Bueno <adrianbueno095@gmail.com>
  */
-
 //this only works for the crm
 async function getCurrentSystemUser() {
     let formcontext = Xrm.Page;
@@ -20,13 +21,13 @@ async function getCurrentSystemUser() {
     return userFullname;
 }
 
-function getUserInput() {
+function getUserCityNameInput() {
     let userInputCityName = prompt(`Hello Random Person, Type a City Name`);
     return userInputCityName;
 }
 
-async function getCurrrentWeatherByCityName() {
-    let cityNameUserInput = getUserInput();
+async function getCurrentWeatherByCityName() {
+    let cityNameUserInput = getUserCityNameInput();
     let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameUserInput}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
 
     await fetch(weatherUrl)
@@ -59,4 +60,4 @@ function createDialogMessage(cityName, celciusValue) {
     document.body.appendChild(dialogTable);
 }
 
-getCurrrentWeatherByCityName();
+getCurrentWeatherByCityName();

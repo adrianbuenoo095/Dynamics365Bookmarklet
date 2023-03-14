@@ -1,6 +1,8 @@
 /**
  * @author: Adrian Bueno <adrianbueno095@gmail.com>
  */
+
+//this only works for the crm
 async function getCurrentSystemUser() {
     let formcontext = Xrm.Page;
 

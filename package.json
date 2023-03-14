@@ -8,5 +8,8 @@
   },
   "author": "ABU",
   "license": "ISC",
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0"
+  }
 }

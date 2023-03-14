@@ -1,4 +1,4 @@
-import { library, icon } from "@fortawesome/fontawesome-svg-core";
+// import { library, icon } from "@fortawesome/fontawesome-svg-core";
 
 /**
  * @author: Adrian Bueno <adrianbueno095@gmail.com>
@@ -50,11 +50,11 @@ function createDialogMessage(cityName, celciusValue) {
     let dialogTable = document.createElement("div");
     dialogTable.style.width = "500px";
     dialogTable.style.height = "500px";
-    dialogTable.style.background = "#C8EFFD";
-    dialogTable.style.position = "absolute";
-    dialogTable.style.left = "50%";
-    dialogTable.style.right = "50%";
+    dialogTable.style.background = "#DCBAE0";
     dialogTable.style.transition = "translate(-50%, -50%)";
+    dialogTable.style.display = "flex";
+    dialogTable.style.alignItems = "center";
+    dialogTable.style.justifyContent = "center";
 
     dialogTable.innerHTML = `Current Weather in ${cityName} is : ${celciusValue}`;
     document.body.appendChild(dialogTable);

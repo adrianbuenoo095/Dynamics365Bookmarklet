@@ -23,6 +23,7 @@ async function getCurrentSystemUser() {
 
 function getUserCityNameInput() {
     let userInputCityName = prompt(`Hello Random Person, Type a City Name`);
+    if (userInputCityName === null) return;
     return userInputCityName;
 }
 

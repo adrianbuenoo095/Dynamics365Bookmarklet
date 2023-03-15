@@ -42,7 +42,10 @@ async function getCurrentWeatherByCityName() {
 
 function convertsKelvinToCelcious(temperatureInkelvin) {
     if (!temperatureInkelvin) return;
-    let resultInCelcius = Math.round(temperatureInkelvin - 273.15);
+
+    let KELVIN_CELSIUS_DIFF = 273.15;
+    let resultInCelcius = Math.round(temperatureInkelvin - KELVIN_CELSIUS_DIFF);
+
     return resultInCelcius;
 }
 

@@ -35,15 +35,14 @@ async function getCurrentWeatherByCityName() {
         .then((response) => response.json())
         .then((data) => {
             let cityName = data.name;
-            let celciusValue = Math.round(convertsKelvinToCelcious(data.main.temp));
+            let celciusValue = convertsKelvinToCelcious(data.main.temp);
             createDialogMessage(cityName, celciusValue);
         });
 }
 
-function convertsKelvinToCelcious(kelvinValue) {
-    if (!kelvinValue) return;
-    let temperatureInkelvin = kelvinValue;
-    let resultInCelcius = temperatureInkelvin - 273.15;
+function convertsKelvinToCelcious(temperatureInkelvin) {
+    if (!temperatureInkelvin) return;
+    let resultInCelcius = Math.round(temperatureInkelvin - 273.15);
     return resultInCelcius;
 }
 

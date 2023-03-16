@@ -23,12 +23,15 @@ async function getCurrentSystemUser() {
 
 function getUserCityNameInput() {
     let userInputCityName = prompt(`Hello Random Person, Type a City Name`);
-    if (userInputCityName === null) return;
+    if (!userInputCityName) return;
     return userInputCityName;
 }
 
 async function getCurrentWeatherByCityName() {
     let cityNameUserInput = getUserCityNameInput();
+
+    if (cityNameUserInput === undefined) return;
+
     let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameUserInput}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
 
     await fetch(weatherUrl)

@@ -1,5 +1,3 @@
-// import { library, icon } from "@fortawesome/fontawesome-svg-core";
-
 /**
  * @author: Adrian Bueno <adrianbueno095@gmail.com>
  */
@@ -9,16 +7,16 @@ async function getCurrentSystemUser() {
 
     if (!formcontext) return;
 
-    let userRecordId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
-    let userFullname = await Xrm.WebApi.retrieveRecord(
+    let userId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
+    let systemUserFullname = await Xrm.WebApi.retrieveRecord(
         "systemuser",
-        userRecordId,
+        userId,
         "?$select=fullname"
     );
 
-    if (!userFullname) return;
+    if (!systemUserFullname) return;
 
-    return userFullname;
+    return systemUserFullname;
 }
 
 function getUserCityNameInput() {

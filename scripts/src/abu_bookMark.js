@@ -19,29 +19,29 @@ async function getCurrentSystemUser() {
     return systemUserFullname;
 }
 
-function getUserCityNameInput() {
+function getCityNameInput() {
     let userInputCityName = prompt(`Hello Random Person, Type a City Name`);
     if (!userInputCityName || userInputCityName.length === 0) return;
     return userInputCityName;
 }
 
-async function getCurrentWeatherByCityName() {
-    let cityNameUserInput = getUserCityNameInput();
+async function displayCurrentWeatherByCityName() {
+    let cityNameInput = getCityNameInput();
 
-    if (cityNameUserInput === undefined) return;
+    if (cityNameInput === undefined) return;
 
-    let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameUserInput}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
+    let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameInput}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
 
     await fetch(weatherUrl)
         .then((response) => response.json())
         .then((data) => {
             let cityName = data.name;
-            let celciusValue = convertsKelvinToCelcious(data.main.temp);
+            let celciusValue = convertsKelvinToCelcius(data.main.temp);
             createDialogMessage(cityName, celciusValue);
         });
 }
 
-function convertsKelvinToCelcious(temperatureInkelvin) {
+function convertsKelvinToCelcius(temperatureInkelvin) {
     if (!temperatureInkelvin) return;
 
     let KELVIN_CELSIUS_DIFF = 273.15;
@@ -67,4 +67,4 @@ function createDialogMessage(cityName, celciusValue) {
     document.body.appendChild(dialogTable);
 }
 
-getCurrentWeatherByCityName();
+displayCurrentWeatherByCityName();

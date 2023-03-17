@@ -62,8 +62,8 @@ function createDialogMessage(cityName, celciusValue) {
     dialogTable.style.transition = "translate(-50%, -50%)";
     dialogTable.style.display = "flex";
     dialogTable.style.alignItems = "center";
-    dialogTable.style.justifyContent = "center"
-    dialogTable.style.fontSize = "30px"
+    dialogTable.style.justifyContent = "center";
+    dialogTable.style.fontSize = "30px";
 
     dialogTable.innerHTML = `Current Weather in ${cityName} is : ${celciusValue} ${degreesCelsiusSymbol}`;
     document.body.appendChild(dialogTable);

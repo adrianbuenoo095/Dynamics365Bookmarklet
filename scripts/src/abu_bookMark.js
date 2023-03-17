@@ -20,9 +20,9 @@ async function getCurrentSystemUser() {
 }
 
 function getCityName() {
-    let userInputCityName = prompt(`Hello Random Person, Type a City Name`);
-    if (!userInputCityName || userInputCityName.length === 0) return;
-    return userInputCityName;
+    let userCityNameInput = prompt(`Hello Random Person, Type a City Name`);
+    if (!userCityNameInput || userCityNameInput.length === 0) return;
+    return userCityNameInput;
 }
 
 async function displayCurrentWeather() {

@@ -19,14 +19,14 @@ async function getCurrentSystemUser() {
     return systemUserFullname;
 }
 
-function getCityNameInput() {
+function getCityName() {
     let userInputCityName = prompt(`Hello Random Person, Type a City Name`);
     if (!userInputCityName || userInputCityName.length === 0) return;
     return userInputCityName;
 }
 
-async function displayCurrentWeatherByCityName() {
-    let cityNameInput = getCityNameInput();
+async function displayCurrentWeather() {
+    let cityNameInput = getCityName();
 
     if (cityNameInput === undefined) return;
 
@@ -36,21 +36,21 @@ async function displayCurrentWeatherByCityName() {
         .then((response) => response.json())
         .then((data) => {
             let cityName = data.name;
-            let celciusValue = convertsKelvinToCelcius(data.main.temp);
-            createDialogMessage(cityName, celciusValue);
+            let celcius = convertsKelvinToCelcius(data.main.temp);
+            createDialogMessage(cityName, celcius);
         });
 }
 
 function convertsKelvinToCelcius(temperatureInkelvin) {
     if (!temperatureInkelvin) return;
 
-    let KELVIN_CELSIUS_DIFF = 273.15;
+    const KELVIN_CELSIUS_DIFF = 273.15;
     let resultInCelcius = Math.round(temperatureInkelvin - KELVIN_CELSIUS_DIFF);
 
     return resultInCelcius;
 }
 
-function createDialogMessage(cityName, celciusValue) {
+function createDialogMessage(cityName, celcius) {
     let dialogTable = document.createElement("div");
     let degreesCelsiusSymbol = "&#8451;";
 
@@ -63,8 +63,8 @@ function createDialogMessage(cityName, celciusValue) {
     dialogTable.style.justifyContent = "center";
     dialogTable.style.fontSize = "30px";
 
-    dialogTable.innerHTML = `Current Weather in ${cityName} is : ${celciusValue} ${degreesCelsiusSymbol}`;
+    dialogTable.innerHTML = `Current Weather in ${cityName} is : ${celcius} ${degreesCelsiusSymbol}`;
     document.body.appendChild(dialogTable);
 }
 
-displayCurrentWeatherByCityName();
+displayCurrentWeather();

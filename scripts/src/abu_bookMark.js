@@ -19,14 +19,14 @@ async function getCurrentSystemUser() {
     return systemUserFullname;
 }
 
-function getCityName() {
+function getCityByName() {
     let userCityNameInput = prompt(`Hello Random Person, Type a City Name`);
     if (!userCityNameInput || userCityNameInput.length === 0) return;
     return userCityNameInput;
 }
 
 async function displayCurrentWeather() {
-    let cityNameInput = getCityName();
+    let cityNameInput = getCityByName();
 
     if (cityNameInput === undefined) return;
 
@@ -43,7 +43,7 @@ async function displayCurrentWeather() {
 
 function convertsKelvinToCelcius(celcius) {
     if (!celcius) return;
-    
+
     const KELVIN_CELSIUS_DIFF = 273.15;
     let resultInCelcius = Math.round(celcius - KELVIN_CELSIUS_DIFF);
 

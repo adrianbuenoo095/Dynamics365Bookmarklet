@@ -1,72 +1,72 @@
 /**
  * @author: Adrian Bueno <adrianbueno095@gmail.com>
  */
-const currentSystemUser = async () => {
-  let formcontext = Xrm.Page;
+const getCurrentSystemUser = async () => {
+    let formcontext = Xrm.Page;
 
-  if (!formcontext) return;
+    if (!formcontext) return;
 
-  let userId = formcontext.context.getUserId().replace(/\{​|\}​/g, "");
-  
-  if (!userId) return;
-  
-  let systemUserFullname = await Xrm.WebApi.retrieveRecord(
-    "systemuser",
-    userId,
-    "?$select=fullname"
-  );
+    let userId = formcontext.context.getUserId()?.replace(/\{​|\}​/g, "");
 
-  if (!systemUserFullname) return;
+    if (!userId) return;
 
-  return systemUserFullname;
+    let systemUserFullname = await Xrm.WebApi.retrieveRecord(
+        "systemuser",
+        userId,
+        "?$select=fullname"
+    );
+
+    if (!systemUserFullname) return;
+
+    return systemUserFullname;
 };
 
 const cityByName = () => {
-  let userCityNameInput = prompt(`Hello Random Person, Type a City Name`);
-  if (!userCityNameInput || userCityNameInput.length === 0) return;
-  return userCityNameInput;
+    let userCityNameInput = prompt(`Hello Random Person, Type a City Name`);
+    if (!userCityNameInput || userCityNameInput.length === 0) return;
+    return userCityNameInput;
 };
 
 async function displayCurrentWeather() {
-  let cityNameInput = cityByName;
+    let cityNameInput = cityByName;
 
-  if (cityNameInput === undefined) return;
+    if (cityNameInput === undefined) return;
 
-  let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameInput}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
+    let weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameInput}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
 
-  await fetch(weatherUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      let cityName = data.name;
-      let celcius = convertsKelvinToCelcius(data.main.temp);
-      createDialogMessage(cityName, celcius);
-    });
+    await fetch(weatherUrl)
+        .then((response) => response.json())
+        .then((data) => {
+            let cityName = data.name;
+            let celcius = convertsKelvinToCelcius(data.main.temp);
+            createDialogMessage(cityName, celcius);
+        });
 }
 
 function convertsKelvinToCelcius(celcius) {
-  if (!celcius) return;
+    if (!celcius) return;
 
-  const KELVIN_CELSIUS_DIFF = 273.15;
-  let resultInCelcius = Math.round(celcius - KELVIN_CELSIUS_DIFF);
+    const KELVIN_CELSIUS_DIFF = 273.15;
+    let resultInCelcius = Math.round(celcius - KELVIN_CELSIUS_DIFF);
 
-  return resultInCelcius;
+    return resultInCelcius;
 }
 
 function createDialogMessage(cityName, celcius) {
-  let dialogTable = document.createElement("div");
-  let degreesCelsiusSymbol = "&#8451;";
+    let dialogTable = document.createElement("div");
+    let degreesCelsiusSymbol = "&#8451;";
 
-  dialogTable.style.width = "500px";
-  dialogTable.style.height = "500px";
-  dialogTable.style.background = "#DCBAE0";
-  dialogTable.style.transition = "translate(-50%, -50%)";
-  dialogTable.style.display = "flex";
-  dialogTable.style.alignItems = "center";
-  dialogTable.style.justifyContent = "center";
-  dialogTable.style.fontSize = "30px";
+    dialogTable.style.width = "500px";
+    dialogTable.style.height = "500px";
+    dialogTable.style.background = "#DCBAE0";
+    dialogTable.style.transition = "translate(-50%, -50%)";
+    dialogTable.style.display = "flex";
+    dialogTable.style.alignItems = "center";
+    dialogTable.style.justifyContent = "center";
+    dialogTable.style.fontSize = "30px";
 
-  dialogTable.innerHTML = `Current Weather in ${cityName} is : ${celcius} ${degreesCelsiusSymbol}`;
-  document.body.appendChild(dialogTable);
+    dialogTable.innerHTML = `Current Weather in ${cityName} is : ${celcius} ${degreesCelsiusSymbol}`;
+    document.body.appendChild(dialogTable);
 }
 
 displayCurrentWeather();

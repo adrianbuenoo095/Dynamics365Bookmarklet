@@ -27,7 +27,7 @@ const cityByName = () => {
     return userCityNameInput;
 };
 
-async function displayCurrentWeather() {
+const displayCurrentWeather = async () => {
     let cityNameInput = cityByName;
 
     if (cityNameInput === undefined) return;
@@ -43,7 +43,7 @@ async function displayCurrentWeather() {
         });
 }
 
-function convertsKelvinToCelcius(celcius) {
+const convertsKelvinToCelcius = (celcius) => {
     if (!celcius) return;
 
     const KELVIN_CELSIUS_DIFF = 273.15;
@@ -52,7 +52,7 @@ function convertsKelvinToCelcius(celcius) {
     return resultInCelcius;
 }
 
-function createDialogMessage(cityName, celcius) {
+const createDialogMessage = (cityName, celcius) => {
     let dialogTable = document.createElement("div");
     let degreesCelsiusSymbol = "&#8451;";
 

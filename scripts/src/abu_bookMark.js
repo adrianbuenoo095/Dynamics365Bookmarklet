@@ -28,7 +28,7 @@ const cityByName = () => {
 };
 
 const displayCurrentWeather = async () => {
-    let cityNameInput = cityByName;
+    let cityNameInput = cityByName();
 
     if (cityNameInput === undefined) return;
 

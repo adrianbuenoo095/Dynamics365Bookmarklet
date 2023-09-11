@@ -51,9 +51,9 @@ const convertsKelvinToCelcius = (celcius) => {
     if (!celcius) return;
 
     const KELVIN_CELSIUS_DIFF = 273.15;
-    let resultInCelcius = Math.round(celcius - KELVIN_CELSIUS_DIFF);
+    let celciusResult = Math.round(celcius - KELVIN_CELSIUS_DIFF);
 
-    return resultInCelcius;
+    return celciusResult;
 }
 
 const createDialogMessage = (city, celcius) => {

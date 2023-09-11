@@ -1,4 +1,5 @@
 /**
+ * Get the crm system user 
  * @author: Adrian Bueno <adrianbueno095@gmail.com>
  */
 const getCurrentSystemUser = async () => {

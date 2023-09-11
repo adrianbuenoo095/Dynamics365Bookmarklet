@@ -36,8 +36,6 @@ const cityByName = () => {
 const displayCurrentWeather = async () => {
     let cityNameInput = cityByName();
 
-    if (cityNameInput === undefined) return;
-
     const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameInput}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
 
     await fetch(API_URL)

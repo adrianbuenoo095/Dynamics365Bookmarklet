@@ -24,7 +24,6 @@ const getCurrentSystemUser = async () => {
 const cityByName = () => {
 
     let userCityNameInput;
-    // let currentUser = getCurrentSystemUser(); this only works on the CRM, obviously  
     do {
         userCityNameInput = prompt(`Hello Random Person, Type a City Name`);
 

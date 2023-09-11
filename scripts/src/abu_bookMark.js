@@ -22,8 +22,14 @@ const getCurrentSystemUser = async () => {
 };
 
 const cityByName = () => {
-    let userCityNameInput = prompt(`Hello Random Person, Type a City Name`);
-    if (!userCityNameInput || userCityNameInput.length === 0) return;
+
+    let userCityNameInput;
+
+    do {
+        userCityNameInput = prompt(`Hello Random Person, Type a City Name`);
+
+    } while (!userCityNameInput)
+
     return userCityNameInput;
 };
 

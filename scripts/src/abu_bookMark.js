@@ -24,19 +24,19 @@ const getCurrentSystemUser = async () => {
 
 const cityByName = () => {
 
-    let userCityNameInput;
+    let cityName;
     do {
-        userCityNameInput = prompt(`Hello Random Person, Type a City Name`);
+        cityName = prompt(`Hello Random Person, Type a City Name`);
 
-    } while (!userCityNameInput)
+    } while (!cityName)
 
-    return userCityNameInput;
+    return cityName;
 };
 
 const displayCurrentWeather = async () => {
-    let cityNameInput = cityByName();
+    let city = cityByName();
 
-    const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${cityNameInput}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
+    const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0002cc42e0f7ee0022f9bfd9aa0d7161`;
 
     await fetch(API_URL)
         .then((response) => response.json())
@@ -56,7 +56,7 @@ const convertsKelvinToCelcius = (celcius) => {
     return resultInCelcius;
 }
 
-const createDialogMessage = (cityName, celcius) => {
+const createDialogMessage = (city, celcius) => {
     let dialogTable = document.createElement("div");
     let degreesCelsiusSymbol = "&#8451;";
 
@@ -69,7 +69,7 @@ const createDialogMessage = (cityName, celcius) => {
     dialogTable.style.justifyContent = "center";
     dialogTable.style.fontSize = "30px";
 
-    dialogTable.innerHTML = `Current Weather in ${cityName} is : ${celcius} ${degreesCelsiusSymbol}`;
+    dialogTable.innerHTML = `Current Weather in ${city} is : ${celcius} ${degreesCelsiusSymbol}`;
     document.body.appendChild(dialogTable);
 }
 
